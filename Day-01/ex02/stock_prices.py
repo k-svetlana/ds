@@ -1,22 +1,22 @@
 import sys
 
-COMPANIES = {
-    'Apple': 'AAPL',
-    'Microsoft': 'MSFT',
-    'Netflix': 'NFLX',
-    'Tesla': 'TSLA',
-    'Nokia': 'NOK'
-}
-
-STOCKS = {
-    'AAPL': 287.73,
-    'MSFT': 173.79,
-    'NFLX': 416.90,
-    'TSLA': 724.88,
-    'NOK': 3.37
-}
 
 def get_price():
+    COMPANIES = {
+        'Apple': 'AAPL',
+        'Microsoft': 'MSFT',
+        'Netflix': 'NFLX',
+        'Tesla': 'TSLA',
+        'Nokia': 'NOK'
+    }
+    STOCKS = {
+        'AAPL': 287.73,
+        'MSFT': 173.79,
+        'NFLX': 416.90,
+        'TSLA': 724.88,
+        'NOK': 3.37
+    }
+    
     if len(sys.argv) != 2:
         sys.exit()
 
@@ -24,11 +24,12 @@ def get_price():
     # https://www.geeksforgeeks.org/string-capitalize-python/
     ticker = COMPANIES.get(company_name)
 
-    if ticker:
-        price = STOCKS.get(ticker)
-        print(price)
-    else:
-        print("Unknown company")
+    if not ticker:
+        print('Unknown company')
+        return  # exit early from the function
 
-if __name__ == "__main__":
+    price = STOCKS.get(ticker)
+    print(price)
+
+if __name__ == '__main__':
     get_price()
