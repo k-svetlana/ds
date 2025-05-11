@@ -1,7 +1,7 @@
 #!/bin/sh
 
-# сохраняем без кавычек во временный файл
-csvformat -U 1 ../ex02/hh_sorted.csv > temp_unquoted.csv
+# сохраняем во временный файл
+csvformat ../ex02/hh_sorted.csv > temp_unquoted.csv
 
 # --no-inference нужен, чтобы утилита считала время, айди и тесты строками
 # иначе она конвертирует их во флоаты, приписывая .0,
@@ -11,11 +11,8 @@ SELECT
     id,
     created_at,
     CASE
-        WHEN 
-            (CASE WHEN name LIKE '%Junior%' THEN 'Junior/' ELSE '' END) ||
-            (CASE WHEN name LIKE '%Middle%' THEN 'Middle/' ELSE '' END) ||
-            (CASE WHEN name LIKE '%Senior%' THEN 'Senior/' ELSE '' END) 
-        = ''
+        WHEN
+            NOT (name LIKE '%Junior%' OR name LIKE '%Middle%' OR name LIKE '%Senior%')
         THEN '-'
         ELSE
             RTRIM(
