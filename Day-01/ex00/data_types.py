@@ -8,7 +8,6 @@ def data_types():
     colors_tuple = ('red','green','blue')
     num_set = {7, 8, 9}
 
-
     types_list = [
         type(num).__name__,
         type(word).__name__,
@@ -21,6 +20,7 @@ def data_types():
     print('[', end='')
     print(*types_list, sep=', ', end='')
     print(']')
+
 
 if __name__ == '__main__':
     data_types()
