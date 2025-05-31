@@ -21,11 +21,12 @@ def get_price():
         sys.exit()
 
     ticker = sys.argv[1].upper()
-    company_name = COMPANIES.get(ticker)
+    company_name = ''
 
     for key, val in COMPANIES.items():
         if val == ticker:
             company_name = key
+            break
 
     if not company_name:
         print('Unknown ticker')
