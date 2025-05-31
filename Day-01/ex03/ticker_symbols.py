@@ -35,5 +35,6 @@ def get_price():
     price = STOCKS.get(ticker)
     print(company_name, price)
 
+
 if __name__ == '__main__':
     get_price()
